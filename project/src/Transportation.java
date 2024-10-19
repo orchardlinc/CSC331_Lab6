@@ -41,7 +41,7 @@ public abstract class Transportation {
 
     public double avgSpeed() {return distance / time;}
 
-    public abstract void transportationDescription();
+    public abstract void typeOfTransportation();
     public abstract void travelInstructions();
 
     @Override
