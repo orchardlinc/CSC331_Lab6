@@ -6,7 +6,7 @@ public abstract class AirTransportation extends Transportation {
     }
 
     @Override
-    public void typeOfTransportation() {
-        System.out.println("Air Transportation");
+    public void transportationSlogan() {
+        System.out.println("Reaching New Heights");
     }
 }
