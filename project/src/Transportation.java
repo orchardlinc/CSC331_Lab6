@@ -46,7 +46,7 @@ public abstract class Transportation {
 
     @Override
     public String toString() {
-        return String.format("%s%s%s%f%f%f%f%d%f", this.name, this.type, this.purchaseType,
+        return String.format("%s%n%s%n%s%n%.2f%n%.2f%n%.2f%n%.2f%n%d%n%.2f%n", this.name, this.type, this.purchaseType,
                 this.cost, this.speed, this.distance,
                 this.time, this.numPassengers, avgSpeed());
     }
