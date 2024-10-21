@@ -7,6 +7,6 @@ public class Dirigible extends AirTransportation {
 
     @Override
     public void travelInstructions() {
-        System.out.println("[TRAVEL INSTRUCTIONS FOR DIRIGIBLE]");
+        System.out.println("Found in the open field.");
     }
 }
