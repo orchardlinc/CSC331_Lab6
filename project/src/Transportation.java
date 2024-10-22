@@ -6,11 +6,11 @@ public abstract class Transportation {
     private double speed;
     private double distance;
     private double time;
-    private int numPassengers;
+    private int maxPassengers;
 
     public Transportation(String name, String type, String purchaseType,
                           double cost, double speed, double distance,
-                          double time, int numPassengers) {
+                          double time, int maxPassengers) {
         this.name = name;
         this.type = type;
         this.purchaseType = purchaseType;
@@ -18,7 +18,7 @@ public abstract class Transportation {
         this.speed = speed;
         this.distance = distance;
         this.time = time;
-        this.numPassengers = numPassengers;
+        this.maxPassengers = maxPassengers;
     }
 
     public String getName() {return name;}
@@ -28,7 +28,7 @@ public abstract class Transportation {
     public double getSpeed() {return speed;}
     public double getDistance() {return distance;}
     public double getTime() {return time;}
-    public int getNumPassengers() {return numPassengers;}
+    public int getMaxPassengers() {return maxPassengers;}
 
     public void setName(String name) {this.name = name;}
     public void setType(String type) {this.type = type;}
@@ -37,7 +37,7 @@ public abstract class Transportation {
     public void setSpeed(double speed) {this.speed = speed;}
     public void setDistance(double distance) {this.distance = distance;}
     public void setTime(double time) {this.time = time;}
-    public void setNumPassengers(int numPassengers) {this.numPassengers = numPassengers;}
+    public void setMaxPassengers(int numPassengers) {this.maxPassengers = numPassengers;}
 
     public double avgSpeed() {return distance / time;}
 
@@ -46,8 +46,8 @@ public abstract class Transportation {
 
     @Override
     public String toString() {
-        return String.format("%s%n%s%n%s%n%.2f%n%.2f%n%.2f%n%.2f%n%d%n%.2f%n", this.name, this.type, this.purchaseType,
-                this.cost, this.speed, this.distance,
-                this.time, this.numPassengers, avgSpeed());
+        return String.format("%s%n%s%n%s%n%.2f%n%.2f%n%.2f%n%.2f%n%d%n%.2f%n", this.name, this.type,
+                this.purchaseType, this.cost, this.speed, this.distance,
+                this.time, this.maxPassengers, avgSpeed());
     }
 }
