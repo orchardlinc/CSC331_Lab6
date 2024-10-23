@@ -7,6 +7,6 @@ public abstract class WaterTransportation extends Transportation {
 
     @Override
     public void transportationSlogan() {
-        System.out.println("Water Travel - Sail The Open Ocean");
+        System.out.println("\"Water Travel - Sail The Open Ocean\"");
     }
 }

@@ -7,6 +7,6 @@ public abstract class LandTransportation extends Transportation {
 
     @Override
     public void transportationSlogan() {
-        System.out.println("Land Travel - Exploring New Roads");
+        System.out.println("\"Land Travel - Exploring New Roads\"");
     }
 }

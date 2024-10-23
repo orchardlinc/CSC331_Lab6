@@ -7,6 +7,6 @@ public abstract class AirTransportation extends Transportation {
 
     @Override
     public void transportationSlogan() {
-        System.out.println("Air Travel - Reaching New Heights");
+        System.out.println("\"Air Travel - Reaching New Heights\"");
     }
 }
