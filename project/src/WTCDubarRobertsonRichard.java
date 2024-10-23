@@ -25,10 +25,10 @@ public class WTCDubarRobertsonRichard {
      */
     public static void main(String[] args) {
         // bottom-level instances
-        Automobile automobile = new Automobile(); // DELETE WHEN FINISHED
-        Bike bike = new Bike(); // DELETE WHEN FINISHED
+        Automobile automobile = new Automobile("Automobile", "Land", "Car", ); // DELETE WHEN FINISHED
+        Bike bike = new Bike("Bike", "Land", "Bike", ); // DELETE WHEN FINISHED
         Boat boat = new Boat(); // DELETE WHEN FINISHED
-        Bus bus = new Bus(); // DELETE WHEN FINISHED
+        Bus bus = new Bus("Bus", "Land", "Ticket", ); // DELETE WHEN FINISHED
         Dirigible dirigible = new Dirigible("Dirigible", "Air", "Ticket",
                 100.50, 20, 50,
                 3.5, 50);
@@ -43,7 +43,7 @@ public class WTCDubarRobertsonRichard {
                 0.5, 100);
         Ship ship = new Ship(); // DELETE WHEN FINISHED
         Submarine submarine = new Submarine(); // DELETE WHEN FINISHED
-        Train train = new Train(); // DELETE WHEN FINISHED
+        Train train = new Train("Train", "Land", "Ticket", ); // DELETE WHEN FINISHED
 
         // array to hold all instances
         // (all objects extend Object, allowing for multi-type arrays)
