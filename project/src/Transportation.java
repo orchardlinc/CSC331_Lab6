@@ -55,6 +55,6 @@ public abstract class Transportation {
                 "Distance (mi): ", this.distance,
                 "Time (hr): ", this.time,
                 "Max Passengers: ", this.maxPassengers,
-                "Average Speed: ", avgSpeed());
+                "Average Speed (mph): ", avgSpeed());
     }
 }
