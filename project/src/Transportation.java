@@ -49,7 +49,7 @@ public abstract class Transportation {
         return String.format("%s%s%n%s%s%n%s%s%n%s%.2f%n%s%.2f%n%s%.2f%n%s%.2f%n%s%d%n%s%.2f%n",
                 "Name: ", this.name,
                 "Type: ", this.type,
-                "Purchase Type (Ticket/Rental): ", this.purchaseType,
+                "Purchase Type: ", this.purchaseType,
                 "Cost: ", this.cost,
                 "Speed (mph): ", this.speed,
                 "Distance (mi): ", this.distance,
