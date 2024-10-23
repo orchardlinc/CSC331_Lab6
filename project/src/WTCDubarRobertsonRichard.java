@@ -25,9 +25,9 @@ public class WTCDubarRobertsonRichard {
      */
     public static void main(String[] args) {
         // bottom-level instances
-        Automobile automobile = new Automobile("Automobile", "Land", "Car", 78.27, 65, 420, 8, 5); // DELETE WHEN FINISHED
-        Bike bike = new Bike("Bike", "Land", "Bike", 30.50, 15, 42, 4.5, 1); // DELETE WHEN FINISHED
-        Boat boat = new Boat(); // DELETE WHEN FINISHED
+        Automobile automobile = new Automobile("Automobile", "Land", "Rental", 78.27, 65, 420, 8, 5); // DELETE WHEN FINISHED
+        Bike bike = new Bike("Bike", "Land", "Rental", 30.50, 15, 42, 4.5, 1); // DELETE WHEN FINISHED
+        Boat boat = new Boat("Boat", "Water", "Rental", 249.99, 30, 4, 3, 10); // DELETE WHEN FINISHED
         Bus bus = new Bus("Bus", "Land", "Ticket", 2.50, 45, 60, 1.5, 100); // DELETE WHEN FINISHED
         Dirigible dirigible = new Dirigible("Dirigible", "Air", "Ticket",
                 100.50, 20, 50,
@@ -41,8 +41,8 @@ public class WTCDubarRobertsonRichard {
         Plane plane = new Plane("Plane", "Air", "Ticket",
                 275.99, 100, 1250.55,
                 0.5, 100);
-        Ship ship = new Ship(); // DELETE WHEN FINISHED
-        Submarine submarine = new Submarine(); // DELETE WHEN FINISHED
+        Ship ship = new Ship("Ship", "Water", "Ticket", 69.99, 25, 2, 2.5, 75); // DELETE WHEN FINISHED
+        Submarine submarine = new Submarine("Submarine", "Water", "Ticket", 575.10, 40, 5.5, 3.5, 25); // DELETE WHEN FINISHED
         Train train = new Train("Train", "Land", "Ticket", 94.99, 80, 300, 4.5, 500); // DELETE WHEN FINISHED
 
         // array to hold all instances
