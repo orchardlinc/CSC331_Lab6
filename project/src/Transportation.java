@@ -37,7 +37,7 @@ public abstract class Transportation {
     public void setSpeed(double speed) {this.speed = speed;}
     public void setDistance(double distance) {this.distance = distance;}
     public void setTime(double time) {this.time = time;}
-    public void setMaxPassengers(int numPassengers) {this.maxPassengers = numPassengers;}
+    public void setMaxPassengers(int maxPassengers) {this.maxPassengers = maxPassengers;}
 
     public double avgSpeed() {return distance / time;}
 

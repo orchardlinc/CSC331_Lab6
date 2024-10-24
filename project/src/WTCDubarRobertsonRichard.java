@@ -5,28 +5,23 @@
  * Section: CSC-331-002
  */
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class WTCDubarRobertsonRichard {
     /**
-     * Call instanceSetup()
-     * Ask the user what type of transportation they want to use (Land, Air, Water).
-     * In a table format, display the options for the type selected, the cost of transportation,
-     * whether the purchase is for a ticket or for a rental, the average speed,
-     * and the number of passengers allowed.
-     * Ask the user to select which mode of transportation they want to use.
-     * Display ALL information about the selected mode using an overridden toString method.
-     * Ask the user to verify that this is the mode of transportation they want to use.
-     * Ask the user how many passengers need to travel using that mode of transportation.
+     * Wilmington Travel Center Program
      * Display the total cost.
      * Display travel instructions (what time their flight leaves,
      * where they need to go to pick up a bike rental, etc.)
      * @param args default argument
      */
     public static void main(String[] args) {
+        // SET UP BOTTOM-LEVEL INSTANCES
         // annoying to look at so made in a separate method
         Transportation[] transportationArray = instanceSetup();
 
+        // ASK USER THEIR PREFERRED TERRAIN
         System.out.println("Welcome to the Wilmington Travel Center!\n");
         System.out.print("""
                 What kind of transportation would you like to use?
@@ -44,30 +39,126 @@ public class WTCDubarRobertsonRichard {
             userChoice = userInput.nextLine();
         }
 
-        // print out each method of transportation for the user's preferred terrain
-        System.out.printf("%n%-18s%-18s%-18s%-18s%-18s%-18s%n", "Name", "Type", "Cost ($)",
-                "Purchase Type", "Avg. Speed (mph)", "Max Passengers");
+        // DISPLAY APPROPRIATE TRANSPORTATION METHODS IN A TABLE
+        System.out.printf("%n%-9s%-18s%-8s%-11s%-16s%-19s%-14s%n",
+                "Number",
+                "Name",
+                "Type",
+                "Cost ($)",
+                "Purchase Type",
+                "Avg. Speed (mph)",
+                "Max Passengers");
         // Stack Overflow solution for string repeats (like Python's "-" * 20)
-        System.out.print(new String(new char[104]).replace("\0", "-") + "\n");
+        System.out.print(new String(new char[95]).replace("\0", "-") + "\n");
 
-        // used to print the transportation slogan (see below)
+        // could use a non-enhanced for-loop to keep a count as well, but less typing this way
         int count = 0;
-        int sloganCheck = 0;
+        // will be used to track the transportation methods of the user's preferred terrain
+        int[] typeArray = new int[0];
 
         // loops through each transportation method and only prints those applicable
         for (Transportation transportation : transportationArray) {
-            if (transportation.getType().equals(userChoice)) {
-                System.out.printf("%-18s%-18s%-18.2f%-18s%-18.2f%-18d%n", transportation.getName(),
-                        transportation.getType(), transportation.getCost(), transportation.getPurchaseType(),
-                        transportation.avgSpeed(), transportation.getMaxPassengers());
-                sloganCheck = count;
+            if (transportation.getType().equalsIgnoreCase(userChoice)) {
+                // length of the typeArray doubles as a way to easily enumerate each transportation method
+                System.out.printf("%-9d%-18s%-8s%-11.2f%-16s%-19.2f%-14d%n",
+                        typeArray.length + 1,
+                        transportation.getName(),
+                        transportation.getType(),
+                        transportation.getCost(),
+                        transportation.getPurchaseType(),
+                        transportation.avgSpeed(),
+                        transportation.getMaxPassengers());
+                // no append operation in default Java, so a copy is made with an extra space
+                // array is used instead of a simple check as it will be used later
+                typeArray = Arrays.copyOf(typeArray, typeArray.length + 1);
+                /*
+                this way, a user can give a number, 1 to (number of transportation methods for said terrain), and
+                have it map to its original position in the transportationArray
+                 */
+                typeArray[typeArray.length - 1] = count;
             }
             count += 1;
         }
 
         System.out.println();
-        // POLYMORPHISM - same method, different output depending on class
-        transportationArray[sloganCheck].transportationSlogan();
+        // POLYMORPHISM - same method, different output depending on class (override)
+        // every method in typeArray extends the same terrain, so the first is called for simplicity's sake
+        transportationArray[typeArray[0]].transportationSlogan();
+
+        // ASK USER FOR PREFERRED METHOD OF TRANSPORTATION
+        boolean unsatisfied = true;
+        int userNum = 0;
+        String confirm;
+
+        while (unsatisfied) {
+            System.out.print("""
+                
+                What method of transportation would you like to use?
+                Enter the corresponding number:\s""");
+
+            userNum = userInput.nextInt();
+            userInput.nextLine();
+
+            while (userNum < 1 || userNum > typeArray.length) {
+                System.out.println("\nIncorrect input...");
+                System.out.print("Enter the corresponding number: ");
+                userNum = userInput.nextInt();
+                userInput.nextLine();
+            }
+
+            // DISPLAY CHOSEN TRANSPORTATION METHOD
+            System.out.println("\nAttributes");
+            System.out.println("----------");
+            System.out.print(transportationArray[typeArray[userNum - 1]]);
+
+            // VERIFY USER'S CHOICE
+            System.out.print("""
+            
+            Is this choice satisfactory?
+            Enter yes or no:\s""");
+            confirm = userInput.nextLine();
+
+            while (!confirm.equalsIgnoreCase("Yes") &&
+                    !confirm.equalsIgnoreCase("No")) {
+                System.out.println("\nIncorrect input...");
+                System.out.print("Enter yes or no: ");
+                confirm = userInput.nextLine();
+            }
+
+            if (confirm.equalsIgnoreCase("yes")) {
+                unsatisfied = false;
+            }
+        }
+
+        // GET THE NUMBER OF PASSENGERS NEEDING TO TRAVEL
+        System.out.print("""
+                
+                How many passengers are coming on this trip?
+                Enter a valid number:\s""");
+
+        int numPassengers = userInput.nextInt();
+        userInput.nextLine();
+
+        while (numPassengers < 1 ||
+                numPassengers > transportationArray[typeArray[userNum - 1]].getMaxPassengers()) {
+            System.out.println("\nInvalid input...");
+            System.out.print("Enter a valid number: ");
+            numPassengers = userInput.nextInt();
+            userInput.nextLine();
+        }
+
+        // DISPLAY TOTAL COST
+        System.out.print("\nTotal Cost ($): ");
+        if (transportationArray[typeArray[userNum - 1]].getPurchaseType().equalsIgnoreCase("Ticket")) {
+            System.out.printf("%.2f%n", transportationArray[typeArray[userNum - 1]].getCost() * numPassengers);
+        } else {
+            System.out.println(transportationArray[typeArray[userNum - 1]].getCost());
+        }
+
+        // DISPLAY TRAVEL INSTRUCTIONS
+        System.out.print("Travel Instructions: ");
+        // POLYMORPHISM - same method, different output depending on class (override)
+        transportationArray[typeArray[userNum - 1]].travelInstructions();
     }
 
     /**
