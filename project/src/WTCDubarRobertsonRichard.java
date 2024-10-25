@@ -11,9 +11,6 @@ import java.util.Scanner;
 public class WTCDubarRobertsonRichard {
     /**
      * Wilmington Travel Center Program
-     * Display the total cost.
-     * Display travel instructions (what time their flight leaves,
-     * where they need to go to pick up a bike rental, etc.)
      * @param args default argument
      */
     public static void main(String[] args) {
